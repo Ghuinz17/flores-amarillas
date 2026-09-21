@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Abrir flores
         bouquetBtn.classList.remove('initial');
         
-        
+        // Mostrar la tarjeta con retraso
         setTimeout(() => {
             messageCard.classList.add('show');
         }, 500);

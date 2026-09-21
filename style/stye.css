@@ -1,213 +1,240 @@
-/* Estilos generales */
+/* --- Estilos Generales --- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 body {
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #31103f 100%);
-    font-family: 'Poppins', sans-serif;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
-    position: relative;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #31103f 100%);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* Fondo de estrellas */
+/* --- Fondo de estrellas --- */
 .stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
-
 .star {
-    position: absolute;
-    background-color: #fff;
-    border-radius: 50%;
-    animation: twinkle 2s infinite ease-in-out;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out;
 }
-
 @keyframes twinkle {
-    0%, 100% { opacity: 0.2; transform: scale(0.8); }
-    50% { opacity: 1; transform: scale(1.2); }
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 .container {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 20px;
-    max-width: 500px;
-    width: 100%;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
 }
 
-/* Encabezados */
+/* --- Encabezados --- */
 .title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
-    color: #ffd700;
-    margin-bottom: 10px;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  font-family: "Dancing Script", cursive;
+  font-size: 3rem;
+  color: #ffd700;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
 }
-
 .subtitle {
-    font-size: 0.95rem;
-    color: #cbd5e1;
-    margin-bottom: 30px;
+  font-size: 1rem;
+  color: #cbd5e1;
+  margin-bottom: 30px;
 }
 
-/* Ramo de flores */
+/* --- Contenedor del Ramo --- */
 .bouquet-container {
-    position: relative;
-    width: 160px;
-    height: 220px;
-    margin: 0 auto 30px auto;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+  position: relative;
+  width: 200px; /* Un poco más ancho para el ramo real */
+  height: 250px;
+  margin: 0 auto 40px auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .bouquet-container:hover {
-    transform: scale(1.05);
+  transform: scale(1.02);
 }
 
+/* --- Texto de ayuda --- */
 .hint-text {
-    position: absolute;
-    bottom: -35px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.8rem;
-    background: rgba(255, 215, 0, 0.2);
-    color: #ffd700;
-    padding: 4px 10px;
-    border-radius: 12px;
-    white-space: nowrap;
-    animation: bounce 1.5s infinite;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+  animation: bounce 1.5s infinite;
 }
-
 @keyframes bounce {
-    0%, 100% { transform: translate(-50%, 0); }
-    50% { transform: translate(-50%, -5px); }
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -5px);
+  }
 }
 
-/* Estilos de las flores amarillas */
-.flower {
-    position: absolute;
-    width: 45px;
-    height: 45px;
-    background: radial-gradient(circle, #854d0e 30%, #ffd700 31%);
-    border-radius: 50%;
-    box-shadow: 0 0 10px #ffea00;
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* --- NUEVOS ESTILOS PARA FLORES REALES --- */
+
+.flower-img {
+  position: absolute;
+  max-width: 80px; /* Tamaño máximo de cada flor individual */
+  height: auto;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3)); /* Sombra realista */
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.5);
+  z-index: 5;
 }
 
-/* Pétalos usando */
-.flower::before, .flower::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    border-radius: 50%;
-    top: 0;
-    left: 0;
-}
-.flower::before { transform: rotate(30deg); }
-.flower::after { transform: rotate(60deg); }
-
-/* Posicionamiento de las flores en el ramo */
-.flower-1 { top: 10px; left: 58px; z-index: 5; }
-.flower-2 { top: 25px; left: 15px; z-index: 4; }
-.flower-3 { top: 25px; left: 100px; z-index: 4; }
-.flower-4 { top: 60px; left: 35px; z-index: 3; }
-.flower-5 { top: 60px; left: 80px; z-index: 3; }
-
-/* Tallo y cinta */
+/* Tallo y Cinta */
 .stem {
-    position: absolute;
-    bottom: 0;
-    left: 76px;
-    width: 8px;
-    height: 110px;
-    background: #15803d;
-    border-radius: 4px;
-    z-index: 1;
+  position: absolute;
+  bottom: -10px;
+  left: 96px;
+  width: 10px;
+  height: 130px;
+  background: #166534;
+  border-radius: 5px;
+  z-index: 1;
 }
-
 .ribbon {
-    position: absolute;
-    bottom: 55px;
-    left: 60px;
-    width: 40px;
-    height: 20px;
-    background: #ef4444;
-    border-radius: 10px;
-    z-index: 6;
+  position: absolute;
+  bottom: 35px;
+  left: 80px;
+  width: 40px;
+  height: 25px;
+  background: #b91c1c;
+  border-radius: 15px;
+  z-index: 6;
+  transform: rotate(-10deg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Estado inicial de las flores cerradas (antes de hacer clic) */
-.bouquet-container.initial .flower {
-    transform: scale(0.1) translate(0, 80px);
-    opacity: 0;
+/* --- Posicionamiento específico para que parezca un ramo --- */
+
+/* Flor central (Girasol principal) */
+.flower-1 {
+  top: 0px;
+  left: 60px;
+  width: 80px;
+  z-index: 5;
+}
+/* Flor izquierda superior (Gerbera) */
+.flower-2 {
+  top: 20px;
+  left: 10px;
+  width: 70px;
+  transform: rotate(-15deg);
+  z-index: 4;
+}
+/* Flor derecha superior (Tulipan) */
+.flower-3 {
+  top: 20px;
+  left: 120px;
+  width: 65px;
+  transform: rotate(15deg);
+  z-index: 4;
+}
+/* Flor izquierda inferior */
+.flower-4 {
+  top: 70px;
+  left: 40px;
+  width: 75px;
+  transform: rotate(-30deg);
+  z-index: 3;
+}
+/* Flor derecha inferior */
+.flower-5 {
+  top: 70px;
+  left: 100px;
+  width: 70px;
+  transform: rotate(25deg);
+  z-index: 3;
 }
 
-/* Tarjeta de mensaje oculta por defecto */
+/* --- Animación de aparición (Ramo cerrado) --- */
+/* Ahora las imágenes se encogen, se desvanecen y se mueven al centro */
+.bouquet-container.initial .flower-img {
+  transform: scale(0.1) translate(0, 100px);
+  opacity: 0;
+}
+
+/* --- Tarjeta de mensaje --- */
 .card {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none;
-    transition: all 0.8s ease;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.8s ease;
 }
-
 .card.show {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
-
 .card h2 {
-    font-family: 'Dancing Script', cursive;
-    color: #ffd700;
-    font-size: 2.2rem;
-    margin-bottom: 15px;
+  font-family: "Dancing Script", cursive;
+  color: #ffd700;
+  font-size: 2.2rem;
+  margin-bottom: 15px;
 }
-
 .card p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #f1f5f9;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #f1f5f9;
 }
 
-/* Animación de pétalos flotantes al hacer clic */
+/* --- Pétalos flotantes --- */
 .floating-petal {
-    position: absolute;
-    background-color: #ffd700;
-    border-radius: 50% 0 50% 50%;
-    pointer-events: none;
-    z-index: 10;
-    animation: fallPetal linear forwards;
+  position: absolute;
+  background-color: #ffd700;
+  border-radius: 50% 0 50% 50%;
+  pointer-events: none;
+  z-index: 10;
+  animation: fallPetal linear forwards;
 }
-
 @keyframes fallPetal {
-    0% {
-        transform: translateY(0) rotate(0deg) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg) scale(0.6);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) scale(0.6);
+    opacity: 0;
+  }
 }
