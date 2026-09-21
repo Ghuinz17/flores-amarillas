@@ -1,56 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para ti, mi amor 💛 | Flor Especial</title>
-    <link rel="stylesheet" href="./style/stye.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Feliz Día de las Flores Amarillas</title>
+<meta name="description" content="Un árbol de girasoles en forma de corazón.">
+<meta name="theme-color" content="#f7f3e6">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Parisienne&display=swap" rel="stylesheet">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌻</text></svg>">
+<link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
 
-    <div class="stars" id="starsContainer"></div>
+<main class="stage" id="stage">
 
-    <div class="container">
-        <header>
-            <h1 class="title">Feliz Día de las Flores Amarillas</h1>
-            <p class="subtitle">Una pequeña sorpresa para ti...</p>
-        </header>
+  <!-- Lienzo: flor, semilla, árbol, girasoles y pétalos -->
+  <canvas id="scene" aria-hidden="true"></canvas>
 
-        <!-- Contenedor principal del botón de la flor -->
-        <div class="flower-action-area" id="bouquetBtn">
-            <!-- La flor que solicitaste, con su degradado y centro característico -->
-            <div class="specific-flower-wrapper">
-                <div class="specific-flower-core"></div>
-                <div class="specific-flower-petals">
-                    <!-- Usamos múltiples capas para lograr el efecto de pétalos y degradado -->
-                    <div class="petal-layer layer-1"></div>
-                    <div class="petal-layer layer-2"></div>
-                    <div class="petal-layer layer-3"></div>
-                    <div class="petal-layer layer-4"></div>
-                </div>
-            </div>
-            
-            <!-- La línea y el texto exacto "Click Aquí" -->
-            <div class="click-hint-container">
-                <div class="click-line"></div>
-                <span class="click-text">Click Aquí</span>
-            </div>
-        </div>
+  <!-- Línea del suelo -->
+  <div class="ground" id="ground" aria-hidden="true"></div>
 
-        <!-- Tarjeta de mensaje romántico -->
-        <div class="card" id="messageCard">
-            <h2>Mi amor 💛</h2>
-            <p>
-                Dicen que regalar flores amarillas significa amor eterno y el deseo de un futuro juntos. 
-                Aunque hoy no nos veamos en persona, quería regalarte estas flores digitales que nunca se marchitan, 
-                exactamente igual de brillante que la alegría que traes a mi vida todos los días. 
-                <br><br>
-                ¡Te quiero muchísimo! 🌻
-            </p>
-        </div>
-    </div>
+  <!-- La carta, se escribe sola -->
+  <article class="letter" id="letter" aria-live="polite">
+    <h1 class="letter__title" id="ln-title"></h1>
+    <p class="letter__body" id="ln-1"></p>
+    <p class="letter__body" id="ln-2"></p>
+    <p class="letter__body" id="ln-3"></p>
+    <p class="letter__body letter__body--end" id="ln-4"></p>
+    <p class="signature" id="signature">Eres el sol que hace florecer cada uno de mis días.</p>
+  </article>
 
-    <script src="./scritps/scritpt.js"></script>
+  <!-- Zona sensible: justo encima de la flor -->
+  <button class="start" id="start" type="button" aria-label="Plantar la semilla"></button>
+
+  <button class="replay" id="replay" type="button" hidden>Verlo otra vez</button>
+
+</main>
+
+<script src="./scritps/scritpt.js"></script>
 </body>
 </html>

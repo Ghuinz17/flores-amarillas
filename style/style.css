@@ -1,0 +1,181 @@
+/* =========================================================
+   Feliz Día de las Flores Amarillas
+   ========================================================= */
+
+:root {
+  --papel:        #f7f3e6;
+  --papel-sombra: #efe9d7;
+  --tinta:        #16130f;
+  --tinta-suave:  #241f18;
+  --tallo:        #1f7a5c;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after { box-sizing: inherit; }
+
+html, body { height: 100%; margin: 0; overflow: hidden; }
+
+body {
+  background: var(--papel);
+  background-image:
+    radial-gradient(130% 95% at 50% 0%, #fbf8ee 0%, var(--papel) 58%, var(--papel-sombra) 100%);
+  color: var(--tinta);
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Escenario ---------- */
+
+.stage { position: relative; width: 100%; height: 100%; overflow: hidden; }
+
+#scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+.ground {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: var(--tinta);
+  opacity: 0;
+  transform: scaleX(0);
+  transition: transform 0.8s ease-out, opacity .3s ease-out;
+  pointer-events: none;
+}
+
+.ground.is-drawn { opacity: .88; transform: scaleX(1); }
+
+/* ---------- La carta ---------- */
+
+.letter {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 40ch;
+  margin: 0;
+  transform: translateY(-50%);
+  font-variant: small-caps;
+  letter-spacing: .015em;
+  pointer-events: none;
+}
+
+.letter__title,
+.letter__body { margin: 0; min-height: 1em; }
+
+.letter__title {
+  font-size: clamp(1rem, 1.7vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.34;
+  margin-bottom: .85em;
+}
+
+.letter__body {
+  font-size: clamp(0.9rem, 1.5vw, 1.5rem); 
+  font-weight: 400;
+  line-height: 1.36;
+  color: var(--tinta-suave);
+}
+
+.letter__body--end {
+  text-align: right;
+  padding-right: .8em;
+  margin-top: .15em;
+}
+
+.caret {
+  display: inline-block;
+  width: .055em;
+  height: .8em;
+  margin-left: .04em;
+  vertical-align: -.05em;
+  background: currentColor;
+  animation: parpadeo .9s steps(1) infinite;
+}
+
+@keyframes parpadeo { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+/* ---------- Firma ---------- */
+
+.signature {
+  margin: 1.1em 0 0;
+  font-family: "Parisienne", "Segoe Script", cursive;
+  font-variant: normal;
+  font-size: clamp(0.95rem, 1.4vw, 1.4rem);
+  line-height: 1.3;
+  text-align: right;
+  color: var(--tinta);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.8s ease-out, transform 1.8s ease-out;
+}
+
+.signature.is-visible { opacity: .95; transform: translateY(0); }
+
+/* ---------- Botones ---------- */
+
+.start {
+  position: absolute;
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.start:focus-visible { outline: 2px solid var(--tallo); outline-offset: 6px; }
+.start.is-gone { display: none; }
+
+.replay {
+  position: absolute;
+  right: 1.5rem;
+  bottom: calc(1.2rem + env(safe-area-inset-bottom, 0px));
+  padding: .5em 1.2em;
+  border: 1px solid rgba(22, 19, 15, .28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .55);
+  color: var(--tinta);
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-variant: small-caps;
+  letter-spacing: .04em;
+  cursor: pointer;
+  opacity: 0;
+  animation: aparecer 1s ease-out forwards;
+}
+
+.replay:hover { background: #fff; border-color: rgba(22, 19, 15, .5); }
+.replay:focus-visible { outline: 2px solid var(--tallo); outline-offset: 2px; }
+
+@keyframes aparecer { to { opacity: .85; } }
+
+/* ---------- Móvil / vertical ---------- */
+
+@media (max-width: 900px), (orientation: portrait) {
+  .letter {
+    left: 50% !important;
+    top: auto !important;
+    width: 90vw !important;
+    transform: translateX(-50%);
+    text-align: left;
+  }
+
+  .letter__title {
+    font-size: clamp(1rem, 4.3vw, 1.5rem);
+    text-align: center;
+    margin-bottom: .6em;
+  }
+
+  .letter__body { font-size: clamp(.95rem, 4vw, 1.4rem); line-height: 1.3; }
+
+  .letter__body--end { text-align: center; padding-right: 0; }
+
+  .signature {
+    font-size: clamp(1rem, 4.1vw, 1.45rem);
+    text-align: center;
+    margin-top: .8em;
+  }
+
+  .replay { right: 50%; transform: translateX(50%); bottom: auto; top: .8rem; }
+}
